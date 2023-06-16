@@ -10,7 +10,7 @@ interface IBookInputsProps {
 }
 
 const BookInputs: FC<IBookInputsProps> = ({ id, name, cost, img }) => {
-    const [inputValue, setInputValue] = useState<string>("м'який")
+    const [inputValue, setInputValue] = useState<string>("м'яка")
 
     const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value)

@@ -18,7 +18,7 @@ const BookItem: FC<IBookItem> = ({ id, name, cost, zanr, img }) => {
             <img
                 onClick={bookNavigateHandler}
                 src={`${process.env.PUBLIC_URL}/img/book-items/${img}`}
-                alt="Піца"
+                alt="Книжка"
                 className="book-item__img"
                 draggable={false}
             />

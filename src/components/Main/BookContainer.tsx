@@ -50,6 +50,8 @@ const BookContainer = () => {
                 cost={item.cost}
                 zanr={item.zanr}
                 img={item.img}
+                author={item.author}
+                anotation={item.anotation}
             />
         ))
     }

@@ -22,9 +22,15 @@
 
         .navigate-book__information {
             width: 100%;
-
+            .navigate-book_author {
+                margin-top: 10px;
+            }
             .navigate-book_zanr {
                 margin-top: 10px;
+            }
+
+            .navigate-book_anotation {
+                margin-bottom: 20px;
             }
 
             .inputs-weight {

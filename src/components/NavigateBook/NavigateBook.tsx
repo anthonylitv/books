@@ -33,6 +33,10 @@ const NavigateBook = () => {
                         {currentItemBook?.name}
                     </h1>
 
+                    <p className="navigate-book_author">
+                        Автор: {currentItemBook?.author}
+                    </p>
+
                     <p className="navigate-book_zanr">
                         Жанри: {currentItemBook?.zanr}
                     </p>
@@ -45,6 +49,10 @@ const NavigateBook = () => {
                             img={currentItemBook.img}
                         />
                     )}
+
+                    <p className="navigate-book_anotation">
+                        {currentItemBook?.anotation}
+                    </p>
 
                     <CartReturnButton />
                 </div>
