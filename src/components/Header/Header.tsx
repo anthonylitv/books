@@ -15,7 +15,7 @@ const Header = () => {
                         alt=""
                         draggable="false"
                     />
-                    <span>ПІЦА</span>
+                    <span>КНИЖКИ</span>
                 </Link>
 
                 {pathname !== "/cart" && !pathname.includes("item") && (

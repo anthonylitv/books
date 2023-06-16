@@ -27,7 +27,7 @@ const BookItem: FC<IBookItem> = ({ id, name, cost, zanr, img }) => {
                 {name}
             </h1>
 
-            <span className="book-item__open-zanr">Склад</span>
+            <span className="book-item__open-zanr">Жанри</span>
             <Bookzanr id={id} zanr={zanr} />
 
             <BookInputs id={id} name={name} cost={cost} img={img} />

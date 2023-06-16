@@ -34,7 +34,7 @@ const NavigateBook = () => {
                     </h1>
 
                     <p className="navigate-book_zanr">
-                        Склад: {currentItemBook?.zanr}
+                        Жанри: {currentItemBook?.zanr}
                     </p>
 
                     {currentItemBook && (

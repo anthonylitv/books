@@ -89,7 +89,7 @@ const SearchInput = () => {
                     onFocus={inputFocusHandler}
                     onBlur={inputBlurHandler}
                     type="text"
-                    placeholder="Пошук піци..."
+                    placeholder="Пошук книги..."
                     className="header-search__input"
                     maxLength={50}
                 />
