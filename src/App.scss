@@ -1,0 +1,18 @@
+.app {
+    max-width: 1500px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 10px;
+    width: calc(100vw - 100px);
+    min-height: 816px;
+
+    @media (max-width: 725px) {
+        width: calc(100vw - 30px);
+    }
+
+    @media (max-width: 424px) {
+        width: 100vw;
+        margin: 0 auto;
+        border-radius: 0;
+    }
+}

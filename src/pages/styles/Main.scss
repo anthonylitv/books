@@ -1,0 +1,19 @@
+.main {
+    padding: 40px 0;
+
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .kategories-sorter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: 1350px) {
+            flex-direction: column;
+            row-gap: 20px;
+        }
+    }
+}

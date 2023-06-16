@@ -1,0 +1,27 @@
+.kategory-input {
+    display: none;
+
+    &:checked + label {
+        background-color: rgb(244, 126, 97);
+        color: white;
+    }
+}
+
+.kategory-label {
+    transition: 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    background-color: #f6f6f6;
+    padding: 12px 30px;
+    font-size: 20px;
+
+    &:hover {
+        background-color: #eeeeee;
+    }
+
+    @media (max-width: 955px) {
+        font-size: 17px;
+        padding: 9px 27px;
+    }
+}

@@ -1,0 +1,25 @@
+.book-item__zanr {
+    position: absolute;
+    transform: translateY(-100%);
+    background-color: #fff;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    bottom: 43%;
+    right: 0;
+    transition: 0.3s ease;
+
+    @media (max-width: 360px) {
+        bottom: 35%;
+    }
+
+    .book-item__zanr-overlay {
+        list-style-image: url("../../../../public/img/check-zanr.svg");
+        margin: 20px 0 0 50px;
+        text-align: left;
+
+        li {
+            font-size: 18px;
+        }
+    }
+}
