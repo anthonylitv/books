@@ -6,10 +6,17 @@ import OutletRoutes from "./pages/OutletRoutes"
 import { useEffect } from "react"
 import NavigateBook from "./components/NavigateBook/NavigateBook"
 import bookApi from "./services/bookApi"
+import { useAppSelector } from "./hooks/redux"
+import ModalAuth from "./components/Auth/ModalAuth"
+import ReactDOM from "react-dom"
 
 function App() {
     const { isError } = bookApi.useFetchBookQuery("")
     const { pathname } = useLocation()
+
+    const isModalAuthShowed = useAppSelector(
+        (state) => state.user.isModalAuthShowed
+    )
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -17,6 +24,12 @@ function App() {
 
     return (
         <>
+            {isModalAuthShowed &&
+                ReactDOM.createPortal(
+                    <ModalAuth />,
+                    document.querySelector("#root")!
+                )}
+
             {!isError ? (
                 <div className="app" id="app">
                     <Routes>

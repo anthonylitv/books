@@ -4,6 +4,7 @@ import cartSlice from "../store/reducers/cart-slice"
 import CartContainer from "../components/Cart/CartContainer"
 import CartEmpty from "../components/Cart/CartEmpty"
 import CartReturnButton from "../components/Cart/CartReturnButton"
+import { setModalAuthShowed } from "../store/reducers/user-slice"
 
 const Cart = () => {
     const dispatch = useAppDispatch()
@@ -16,6 +17,10 @@ const Cart = () => {
     const isCartEmpty = booksInCart.length === 0
 
     const total = booksInCart.reduce((total, item) => total + item.totalCost, 0)
+
+    const modalChangeHandler = () => {
+        dispatch(setModalAuthShowed(true))
+    }
 
     return (
         <>
@@ -59,7 +64,10 @@ const Cart = () => {
 
                         <div className="cart__footer">
                             <CartReturnButton />
-                            <button className="cart__final">
+                            <button
+                                className="cart__final"
+                                onClick={modalChangeHandler}
+                            >
                                 Оплатити зараз
                             </button>
                         </div>

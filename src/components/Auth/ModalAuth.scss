@@ -1,0 +1,81 @@
+.modal-auth {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(1, 1, 1, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content {
+        position: relative;
+        background-color: white;
+        border-radius: 20px;
+        padding: 50px;
+
+        .method-h {
+            text-align: center;
+        }
+
+        .krest {
+            font-size: 30px;
+            position: absolute;
+            right: 15px;
+            top: 5px;
+            cursor: pointer;
+
+            &:hover {
+                color: gray;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+
+            input {
+                border-radius: 2px;
+                font-size: 20px;
+                padding: 5px 10px;
+                background-color: rgb(230, 227, 227);
+                border: none;
+                outline: none;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+                &:focus {
+                    box-shadow: 0 0 2px black;
+                }
+            }
+
+            .button-auth {
+                align-self: center;
+                padding: 10px 30px;
+                border-radius: 20px;
+                color: white;
+                border: none;
+                cursor: pointer;
+                background-color: rgb(235, 46, 46);
+                transition: 0.3s ease;
+
+                &:hover {
+                    background-color: white;
+                    color: rgb(235, 46, 46);
+                }
+            }
+
+            span {
+                text-align: center;
+                text-decoration: underline;
+                cursor: pointer;
+
+                &:hover {
+                    color: gray;
+                }
+            }
+        }
+    }
+}
