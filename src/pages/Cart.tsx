@@ -5,8 +5,11 @@ import CartContainer from "../components/Cart/CartContainer"
 import CartEmpty from "../components/Cart/CartEmpty"
 import CartReturnButton from "../components/Cart/CartReturnButton"
 import { setModalAuthShowed } from "../store/reducers/user-slice"
+import { useAuth } from "../hooks/use-auth"
 
 const Cart = () => {
+    const { isAuth } = useAuth()
+
     const dispatch = useAppDispatch()
 
     const cartClearHandler = () => {
@@ -19,7 +22,9 @@ const Cart = () => {
     const total = booksInCart.reduce((total, item) => total + item.totalCost, 0)
 
     const modalChangeHandler = () => {
-        dispatch(setModalAuthShowed(true))
+        if (!isAuth) {
+            dispatch(setModalAuthShowed(true))
+        }
     }
 
     return (
