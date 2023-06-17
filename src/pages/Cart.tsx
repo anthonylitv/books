@@ -6,6 +6,7 @@ import CartEmpty from "../components/Cart/CartEmpty"
 import CartReturnButton from "../components/Cart/CartReturnButton"
 import { setModalAuthShowed } from "../store/reducers/user-slice"
 import { useAuth } from "../hooks/use-auth"
+import axios from "axios"
 
 const Cart = () => {
     const { isAuth } = useAuth()
@@ -24,6 +25,34 @@ const Cart = () => {
     const modalChangeHandler = () => {
         if (!isAuth) {
             dispatch(setModalAuthShowed(true))
+        } else {
+            const telegramBotToken =
+                "5682756625:AAFOB6usfK4HNSyzP6fbnqo9w2oij4aziho"
+
+            const userId = "585354756"
+
+            const messageText = "Хочу Ващенко"
+
+            axios
+                .post(
+                    `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+                    {
+                        chat_id: userId,
+                        text: messageText,
+                    }
+                )
+                .then((response: any) => {
+                    console.log(
+                        "Сообщение отправлено в Telegram:",
+                        response.data
+                    )
+                })
+                .catch((error: any) => {
+                    console.error(
+                        "Ошибка при отправке сообщения в Telegram:",
+                        error
+                    )
+                })
         }
     }
 
