@@ -4,13 +4,19 @@ import "./ModalAuth.scss"
 import { FC, useEffect, useRef, useState } from "react"
 
 const ModalAuth: FC = () => {
+    const [isModalAnimated, setIsModalAnimated] = useState<boolean>(false)
+
     useEffect(() => {
         document.body.style.overflow = "hidden"
+        setIsModalAnimated(true)
 
         return () => {
             document.body.style.overflow = "auto"
         }
     }, [])
+
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
 
     const overflowModal = useRef<HTMLDivElement>(null)
     const krestModal = useRef<HTMLDivElement>(null)
@@ -23,7 +29,10 @@ const ModalAuth: FC = () => {
             event.target === overflowModal.current ||
             event.target === krestModal.current
         ) {
-            dispatch(setModalAuthShowed(false))
+            setIsModalAnimated(false)
+            setTimeout(() => {
+                dispatch(setModalAuthShowed(false))
+            }, 300)
         }
     }
 
@@ -32,6 +41,9 @@ const ModalAuth: FC = () => {
     }
 
     const methodChangeHandler = () => {
+        setEmail("")
+        setPassword("")
+
         setMethodAuth((prevState) => {
             if (prevState === "auth") {
                 return "reg"
@@ -44,7 +56,7 @@ const ModalAuth: FC = () => {
     return (
         <div
             onClick={disableModalHandler}
-            className="modal-auth"
+            className={`modal-auth ${isModalAnimated ? "anim" : ""}`}
             ref={overflowModal}
         >
             <div className="modal-content">
@@ -57,8 +69,16 @@ const ModalAuth: FC = () => {
                         {methodAuth === "auth" ? "Вхід" : "Реєстрація"}
                     </h1>
 
-                    <input placeholder="Email" type="text" className="email" />
                     <input
+                        value={email}
+                        onChange={(event) => setEmail(event?.target.value)}
+                        placeholder="Email"
+                        type="text"
+                        className="email"
+                    />
+                    <input
+                        value={password}
+                        onChange={(event) => setPassword(event?.target.value)}
                         placeholder="Пароль"
                         type="password"
                         className="email"
