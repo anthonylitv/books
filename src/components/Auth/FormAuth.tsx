@@ -44,6 +44,16 @@ const FormAuth: FC<IFormAuthProps> = ({ userLogin, userSignUp }) => {
         })
     }
 
+    const emailChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value)
+    }
+
+    const passwordChangeHandler = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        setPassword(event.target.value)
+    }
+
     return (
         <div
             onClick={disableModalHandler}
@@ -62,14 +72,14 @@ const FormAuth: FC<IFormAuthProps> = ({ userLogin, userSignUp }) => {
 
                     <input
                         value={email}
-                        onChange={(event) => setEmail(event?.target.value)}
+                        onChange={emailChangeHandler}
                         placeholder="Email"
                         type="text"
                         className="email"
                     />
                     <input
                         value={password}
-                        onChange={(event) => setPassword(event?.target.value)}
+                        onChange={passwordChangeHandler}
                         placeholder="Пароль"
                         type="password"
                         className="email"

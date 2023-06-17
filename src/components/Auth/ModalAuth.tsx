@@ -32,9 +32,14 @@ const ModalAuth: FC = () => {
                 )
             })
             .catch((error: any) => {
-                console.log(error)
+                alert(
+                    "Помилка при введенні даних або такого користувача не існує"
+                )
+                throw error
             })
-            .then(() => window.location.reload())
+            .then(() => {
+                window.location.reload()
+            })
     }
 
     const userSignUp = (email: string, password: string) => {
@@ -51,9 +56,12 @@ const ModalAuth: FC = () => {
                 )
             })
             .catch((error: any) => {
-                console.log(error)
+                alert("Помилка при введенні даних або такий користувач вже є")
+                throw error
             })
-            .then(() => window.location.reload())
+            .then(() => {
+                window.location.reload()
+            })
     }
 
     return <FormAuth userLogin={userLogin} userSignUp={userSignUp} />
