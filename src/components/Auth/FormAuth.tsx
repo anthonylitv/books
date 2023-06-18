@@ -91,7 +91,7 @@ const FormAuth: FC<IFormAuthProps> = ({ userLogin, userSignUp }) => {
                                 onClick={() => userLogin(email, password)}
                                 className="button-auth"
                             >
-                                Ввійти
+                                Увійти
                             </button>
                             <span onClick={methodChangeHandler}>
                                 Реєстрація

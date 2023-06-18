@@ -28,10 +28,6 @@ const CartModal = () => {
     const overflowModal = useRef<HTMLDivElement>(null)
     const krestModal = useRef<HTMLDivElement>(null)
 
-    console.log(
-        `
-`
-    )
     const {
         register,
         formState: { errors },
@@ -43,9 +39,9 @@ const CartModal = () => {
             "5682756625:AAFOB6usfK4HNSyzP6fbnqo9w2oij4aziho"
         const userId = "585354756"
         const messageText = `Дані замовлення:
-${data.name} ${data.lastName}
-${data.dostavka}
-${data.phone}
+Ім'я та прізвище: ${data.name} ${data.lastName}
+Адреса доставки та метод: ${data.dostavka}
+Номер телефону: ${data.phone}
 Товари:
 ${cartItems.map(
     (item) =>

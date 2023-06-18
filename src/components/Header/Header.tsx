@@ -46,7 +46,7 @@ const Header = () => {
                         }}
                         className="exit"
                     >
-                        Ввійти
+                        Увійти
                     </div>
                 )}
             </div>
