@@ -4,9 +4,14 @@ import cartSlice from "../store/reducers/cart-slice"
 import CartContainer from "../components/Cart/CartContainer"
 import CartEmpty from "../components/Cart/CartEmpty"
 import CartReturnButton from "../components/Cart/CartReturnButton"
-import { setModalAuthShowed } from "../store/reducers/user-slice"
+import {
+    setModalAuthShowed,
+    setModalCartShowed,
+} from "../store/reducers/user-slice"
 import { useAuth } from "../hooks/use-auth"
 import axios from "axios"
+import CartModal from "../components/Cart/CartModal"
+import ReactDOM from "react-dom"
 
 const Cart = () => {
     const { isAuth } = useAuth()
@@ -17,6 +22,9 @@ const Cart = () => {
         dispatch(cartSlice.actions.clearCart())
     }
 
+    const isModalCartShowed = useAppSelector(
+        (state) => state.user.isModalCartShowed
+    )
     const booksInCart = useAppSelector((state) => state.cartSlice.items)
     const isCartEmpty = booksInCart.length === 0
 
@@ -26,38 +34,17 @@ const Cart = () => {
         if (!isAuth) {
             dispatch(setModalAuthShowed(true))
         } else {
-            const telegramBotToken =
-                "5682756625:AAFOB6usfK4HNSyzP6fbnqo9w2oij4aziho"
-
-            const userId = "585354756"
-
-            const messageText = "Хочу Ващенко"
-
-            axios
-                .post(
-                    `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
-                    {
-                        chat_id: userId,
-                        text: messageText,
-                    }
-                )
-                .then((response: any) => {
-                    console.log(
-                        "Сообщение отправлено в Telegram:",
-                        response.data
-                    )
-                })
-                .catch((error: any) => {
-                    console.error(
-                        "Ошибка при отправке сообщения в Telegram:",
-                        error
-                    )
-                })
+            dispatch(setModalCartShowed(true))
         }
     }
 
     return (
         <>
+            {isModalCartShowed &&
+                ReactDOM.createPortal(
+                    <CartModal />,
+                    document.querySelector("#root")!
+                )}
             {isCartEmpty ? (
                 <CartEmpty />
             ) : (

@@ -1,0 +1,67 @@
+.cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    form {
+        position: relative;
+        background-color: #fff;
+        padding: 50px;
+        min-width: 70vw;
+        min-height: 70vh;
+        font-size: 20px;
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input {
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 20px;
+            border: 1px solid gray;
+        }
+
+        p {
+            color: red;
+            font-size: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(227, 61, 61);
+            color: white;
+            border: none;
+            margin-top: 20px;
+            &:hover {
+                border: 1px solid rgb(227, 61, 61);
+                color: rgb(227, 61, 61);
+                background-color: #fff;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.krest {
+    font-size: 30px;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    cursor: pointer;
+
+    &:hover {
+        color: gray;
+    }
+}

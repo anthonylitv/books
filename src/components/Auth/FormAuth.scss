@@ -20,18 +20,6 @@
             text-align: center;
         }
 
-        .krest {
-            font-size: 30px;
-            position: absolute;
-            right: 15px;
-            top: 5px;
-            cursor: pointer;
-
-            &:hover {
-                color: gray;
-            }
-        }
-
         form {
             display: flex;
             flex-direction: column;

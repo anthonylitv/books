@@ -5,6 +5,7 @@ const initialState = {
     token: JSON.parse(localStorage.getItem("user") as any)?.token || null,
     id: JSON.parse(localStorage.getItem("user") as any)?.id || null,
     isModalAuthShowed: false,
+    isModalCartShowed: false,
 }
 
 const userSlice = createSlice({
@@ -35,9 +36,13 @@ const userSlice = createSlice({
         setModalAuthShowed(state, action) {
             state.isModalAuthShowed = action.payload
         },
+        setModalCartShowed(state, action) {
+            state.isModalCartShowed = action.payload
+        },
     },
 })
 
-export const { setUser, removeUser, setModalAuthShowed } = userSlice.actions
+export const { setUser, removeUser, setModalAuthShowed, setModalCartShowed } =
+    userSlice.actions
 
 export default userSlice.reducer
