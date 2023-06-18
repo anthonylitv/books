@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import bookSlice from "../../store/reducers/book-slice"
 
 export const sortVariants = [
-    "За популярністю",
+    "Всі книги",
     "Від дешевих до дорогих",
     "Від дорогих до дешевих",
 ]

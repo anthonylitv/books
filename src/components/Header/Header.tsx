@@ -29,6 +29,11 @@ const Header = () => {
                 )}
 
                 {pathname !== "/cart" && <CartButton />}
+                {email === "admin@gmail.com" && (
+                    <Link className="admin" to="/admin">
+                        Адмін панель
+                    </Link>
+                )}
                 {isAuth ? (
                     <div
                         onClick={() => {

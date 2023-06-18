@@ -47,10 +47,13 @@
             }
         }
 
-        .exit {
+        .exit,
+        .admin {
+            color: black;
             margin-left: 50px;
             font-size: 20px;
             cursor: pointer;
+            text-decoration: none;
         }
     }
 }

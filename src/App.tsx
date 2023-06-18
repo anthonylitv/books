@@ -9,6 +9,7 @@ import bookApi from "./services/bookApi"
 import { useAppSelector } from "./hooks/redux"
 import ModalAuth from "./components/Auth/ModalAuth"
 import ReactDOM from "react-dom"
+import AdminPage from "./components/Admin/AdminPage"
 
 function App() {
     const { isError } = bookApi.useFetchBookQuery("")
@@ -39,6 +40,7 @@ function App() {
                             <Route path="item/:id" element={<NavigateBook />} />
                             <Route path="*" element={<Navigate to="/" />} />
                         </Route>
+                        <Route path="/admin" element={<AdminPage />} />
                     </Routes>
                 </div>
             ) : (
