@@ -1,2 +1,18 @@
 .comments {
 }
+
+.comment {
+    display: flex;
+    align-items: start;
+    column-gap: 10px;
+    margin-top: 20px;
+    border-top: 1px solid gray;
+    padding: 10px;
+    img {
+        width: 70px;
+    }
+    .info {
+        max-width: 50vw;
+        word-wrap: break-word;
+    }
+}

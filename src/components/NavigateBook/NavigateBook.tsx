@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import bookApi from "../../services/bookApi"
 import BookInputs from "../Main/BookInputs"
 import CartReturnButton from "../Cart/CartReturnButton"
+import Comments from "./Comments"
 
 type NavigateBookParams = {
     id: string
@@ -20,42 +21,45 @@ const NavigateBook = () => {
     return (
         <div className="navigate-book">
             <div className="container">
-                <img
-                    src={`${process.env.PUBLIC_URL}/img/book-items/${
-                        currentItemBook?.img || ""
-                    }`}
-                    alt=""
-                    className="navigate-book__img"
-                />
+                <div className="navigate-one">
+                    <img
+                        src={`${process.env.PUBLIC_URL}/img/book-items/${
+                            currentItemBook?.img || ""
+                        }`}
+                        alt=""
+                        className="navigate-book__img"
+                    />
 
-                <div className="navigate-book__information">
-                    <h1 className="navigate-book__name">
-                        {currentItemBook?.name}
-                    </h1>
+                    <div className="navigate-book__information">
+                        <h1 className="navigate-book__name">
+                            {currentItemBook?.name}
+                        </h1>
 
-                    <p className="navigate-book_author">
-                        Автор: {currentItemBook?.author}
-                    </p>
+                        <p className="navigate-book_author">
+                            Автор: {currentItemBook?.author}
+                        </p>
 
-                    <p className="navigate-book_zanr">
-                        Жанри: {currentItemBook?.zanr}
-                    </p>
+                        <p className="navigate-book_zanr">
+                            Жанри: {currentItemBook?.zanr}
+                        </p>
 
-                    {currentItemBook && (
-                        <BookInputs
-                            id={currentItemBook.id}
-                            name={currentItemBook.name}
-                            cost={currentItemBook.cost}
-                            img={currentItemBook.img}
-                        />
-                    )}
+                        {currentItemBook && (
+                            <BookInputs
+                                id={currentItemBook.id}
+                                name={currentItemBook.name}
+                                cost={currentItemBook.cost}
+                                img={currentItemBook.img}
+                            />
+                        )}
 
-                    <p className="navigate-book_anotation">
-                        {currentItemBook?.anotation}
-                    </p>
+                        <p className="navigate-book_anotation">
+                            {currentItemBook?.anotation}
+                        </p>
 
-                    <CartReturnButton />
+                        <CartReturnButton />
+                    </div>
                 </div>
+                <Comments />
             </div>
         </div>
     )
