@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form"
 import "./styles/CartModal.scss"
 import { useEffect, useRef } from "react"
 import { setModalCartShowed } from "../../store/reducers/user-slice"
-import { useAppDispatch } from "../../hooks/redux"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import axios from "axios"
 
 const CartModal = () => {
     const dispatch = useAppDispatch()
+    const cartItems = useAppSelector((state) => state.cartSlice.items)
 
     useEffect(() => {
         document.body.style.overflow = "hidden"
@@ -27,6 +28,10 @@ const CartModal = () => {
     const overflowModal = useRef<HTMLDivElement>(null)
     const krestModal = useRef<HTMLDivElement>(null)
 
+    console.log(
+        `
+`
+    )
     const {
         register,
         formState: { errors },
@@ -37,10 +42,22 @@ const CartModal = () => {
         const telegramBotToken =
             "5682756625:AAFOB6usfK4HNSyzP6fbnqo9w2oij4aziho"
         const userId = "585354756"
-        const messageText = `${data.name} ${data.lastName}
-            ${data.dostavka}
-            ${data.phone}
-            `
+        const messageText = `Дані замовлення:
+${data.name} ${data.lastName}
+${data.dostavka}
+${data.phone}
+Товари:
+${cartItems.map(
+    (item) =>
+        `Назва книги: ${item.name}, обкладинка: ${item.choose}, кількість: ${item.amount}, сума: ${item.totalCost} грн  `
+).join(`
+`)}
+Остаточна сума замовлення: ${cartItems.reduce(
+            (total, item) => item.totalCost + total,
+            0
+        )} грн
+`
+
         axios
             .post(
                 `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
@@ -58,8 +75,9 @@ const CartModal = () => {
                     error
                 )
             })
-
-        window.location.reload()
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
     })
 
     return (

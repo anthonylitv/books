@@ -9,7 +9,6 @@ import {
     setModalCartShowed,
 } from "../store/reducers/user-slice"
 import { useAuth } from "../hooks/use-auth"
-import axios from "axios"
 import CartModal from "../components/Cart/CartModal"
 import ReactDOM from "react-dom"
 
