@@ -1,4 +1,37 @@
 .comments {
+    margin-top: 50px;
+    .block {
+        display: flex;
+        column-gap: 20px;
+
+        textarea {
+            resize: vertical;
+            padding: 10px 20px;
+            width: 50vw;
+            font-size: 20px;
+            border: 1px solid gray;
+
+            &.not {
+                border: 1px solid red;
+                color: red;
+            }
+        }
+
+        button {
+            align-self: center;
+            background-color: rgb(27, 182, 27);
+            color: black;
+            border: none;
+            padding: 20px 50px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            &:hover {
+                color: rgb(27, 182, 27);
+                background-color: #fff;
+                border: 1px solid rgb(27, 182, 27);
+            }
+        }
+    }
 }
 
 .comment {
