@@ -1,7 +1,6 @@
 export interface IBookItem {
     id: number
     name: string
-    kategory: string
     cost: number[]
     zanr: string
     img: string

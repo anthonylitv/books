@@ -1,14 +1,15 @@
+import { FC } from "react"
 import { useForm } from "react-hook-form"
-import "./AdminPage.scss"
 import bookApi from "../../services/bookApi"
-const AdminPage = () => {
-    const { data } = bookApi.useFetchBookQuery("")
-    const [addBook, { isError, isSuccess }] = bookApi.useAddBookMutation()
+import { IBookItem, IBookKategory } from "../../models/book"
 
-    console.log(bookApi.useAddBookMutation())
-    const zanri = data?.kategories.filter((item) => item.kategory !== "Всі")
+interface IAdminAddBookProps {
+    zanri: IBookKategory[]
+    books: IBookItem[]
+}
 
-    const books = data?.assort.slice()
+const AdminAddBook: FC<IAdminAddBookProps> = ({ zanri, books }) => {
+    const [addBook, { isSuccess }] = bookApi.useAddBookMutation()
 
     const {
         register,
@@ -17,9 +18,9 @@ const AdminPage = () => {
         reset,
     } = useForm({ mode: "onBlur" })
 
-    const onSubmit = handleSubmit((data) => {
+    const handleSubmitHandler = handleSubmit((data) => {
         books.push({
-            id: books.length + 1,
+            id: books.length,
             name: data.name,
             img: data.img,
             author: data.author,
@@ -28,22 +29,14 @@ const AdminPage = () => {
             anotation: data.anotation,
         })
         addBook(books).unwrap()
-        // fetch(
-        //     "https://books-a2888-default-rtdb.firebaseio.com/book/assort.json",
-        //     {
-        //         method: "PUT",
-        //         body: JSON.stringify(books),
-        //     }
-        // )
 
         reset()
     })
 
     return (
-        <div className="adminka">
-            <h1>Адмін панель</h1>
-
-            <form onSubmit={onSubmit}>
+        <div className="adminaddbook">
+            <h2>Додавання книги</h2>
+            <form onSubmit={handleSubmitHandler}>
                 <label>
                     Назва книги:
                     <input
@@ -51,7 +44,7 @@ const AdminPage = () => {
                             required: "Це поле обов'язкове для заповнення",
                         })}
                     />
-                    {errors?.name && <p>{errors?.name?.message}</p>}
+                    {errors?.name && <p>{errors?.name?.message as any}</p>}
                 </label>
 
                 <span>Жанри:</span>
@@ -67,7 +60,7 @@ const AdminPage = () => {
                                 required: "Виберіть хоча б одне",
                             })}
                         />
-                        {errors?.zanr && <p>{errors?.zanr?.message}</p>}
+                        {errors?.zanr && <p>{errors?.zanr?.message as any}</p>}
                     </label>
                 ))}
 
@@ -78,7 +71,9 @@ const AdminPage = () => {
                             required: "Це поле обов'язкове для заповнення",
                         })}
                     />
-                    {errors?.anotation && <p>{errors?.anotation?.message}</p>}
+                    {errors?.anotation && (
+                        <p>{errors?.anotation?.message as any}</p>
+                    )}
                 </label>
 
                 <label>
@@ -90,7 +85,7 @@ const AdminPage = () => {
                             min: { message: "Мінімальне значення 1", value: 1 },
                         })}
                     />
-                    {errors?.cost1 && <p>{errors?.cost1?.message}</p>}
+                    {errors?.cost1 && <p>{errors?.cost1?.message as any}</p>}
                 </label>
 
                 <label>
@@ -102,7 +97,7 @@ const AdminPage = () => {
                             min: { message: "Мінімальне значення 1", value: 1 },
                         })}
                     />
-                    {errors?.cost2 && <p>{errors?.cost2?.message}</p>}
+                    {errors?.cost2 && <p>{errors?.cost2?.message as any}</p>}
                 </label>
 
                 <label>
@@ -112,7 +107,7 @@ const AdminPage = () => {
                             required: "Це поле обов'язкове для заповнення",
                         })}
                     />
-                    {errors?.author && <p>{errors?.author?.message}</p>}
+                    {errors?.author && <p>{errors?.author?.message as any}</p>}
                 </label>
 
                 <label>
@@ -123,15 +118,14 @@ const AdminPage = () => {
                             required: "Це поле обов'язкове для заповнення",
                         })}
                     />
-                    {errors?.img && <p>{errors?.img?.message}</p>}
+                    {errors?.img && <p>{errors?.img?.message as any}</p>}
                 </label>
 
                 <input type="submit" value="Додати книгу" />
             </form>
-
             {isSuccess && <h1>Книгу успішно додано</h1>}
         </div>
     )
 }
 
-export default AdminPage
+export default AdminAddBook

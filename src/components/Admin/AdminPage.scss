@@ -1,6 +1,11 @@
 .adminka {
     padding: 50px;
-
+    .adminka-main-zagolovok {
+        text-align: right;
+    }
+    .adminka-content {
+        display: flex;
+    }
     form {
         display: flex;
         flex-direction: column;
@@ -27,6 +32,11 @@
                 color: rgb(37, 66, 211);
                 background-color: #fff;
             }
+        }
+
+        .Error {
+            color: red;
+            font-size: 10px;
         }
     }
 }

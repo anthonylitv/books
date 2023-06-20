@@ -46,7 +46,6 @@ const BookContainer = () => {
                 key={item.id}
                 id={item.id}
                 name={item.name}
-                kategory={item.kategory}
                 cost={item.cost}
                 zanr={item.zanr}
                 img={item.img}
